@@ -6,4 +6,5 @@ export default abstract class Store implements IStore {
     abstract update(id : string, listItem: Object) : void;
     abstract del(id : string) : void;
     abstract clearAll() : void;
+    abstract add() : void;
 }

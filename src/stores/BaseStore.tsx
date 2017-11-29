@@ -4,7 +4,7 @@ import fire from '../fire.js';
 
 import Store from './_Store';
 
-export default class BaseStore extends Store{
+export default abstract class BaseStore extends Store{
 
     ref: string;
 
@@ -32,10 +32,29 @@ export default class BaseStore extends Store{
         });
     }
 
+    add() {
+        const self = this;
+        const messagesRef = fire.database().ref(this.ref);
+        const id = messagesRef.push().key;
+        this.update(id, 
+            self.merge(id, this.addObject())
+        );
+    };
+
+    merge(id : string, object ?: any){
+        object.id = id;
+        return object;
+    }
+
+    abstract addObject() : void;
+    abstract afterAdd() : void;
+
     update(id : string, listItem: Object) {
         const self = this;
         const listRef = fire.database().ref(this.ref);
-        listRef.update({[id]: listItem})
+        listRef.update({[id]: listItem}, ()=>{
+            self.afterAdd();
+        })
     };
 
     del(id : string) {
@@ -51,13 +70,12 @@ export default class BaseStore extends Store{
     };
 
     clearAll(){
-        const self = this;
         const listRef = fire.database().ref(this.ref);
         this.loading = true;
 
-        setTimeout(function() {
+        setTimeout(() => {
         listRef.remove();
-            self.loading = false;
+            this.loading = false;
         }, 3500);
     }
 

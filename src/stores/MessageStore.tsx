@@ -14,21 +14,17 @@ export class MessageStore extends BaseStore {
     super('messages');
   }
 
-  add() {
-    const self = this;
-    const messagesRef = fire.database().ref(this.ref);
-    const id = messagesRef.push().key;
-    this.update(id, {
-      id: id,
-      title: this.message
-    });
+  addObject(){
+    return {
+      title : this.message
+    }
+  }
 
+  afterAdd(){
+    this.shouldScroll = true;
+    this.typing = false;
     this.message = '';
-    setTimeout(function() {
-      self.shouldScroll = true;
-      self.typing = false;
-    }, 300);
-  };
+  }
 
   setMessage(message : string){
     this.message = message;

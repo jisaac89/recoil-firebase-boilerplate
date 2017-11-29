@@ -8,6 +8,7 @@ export class AppStore {
     
     @observable nightmode = false;
     @observable mobile = false;
+    @observable menuEnabled = false;
 
     constructor() {
         const self = this;
