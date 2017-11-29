@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import {Recoil, Table, Button, Toolbar, Input, Emerge, Layer, SlideIn, Loading, Open, Checkbox} from '../../recoil/src/index';
+import {Recoil, Layer} from '../../recoil/src/index';
 
 import {observer} from 'mobx-react';
 
-import {appStore, messageStore} from '../stores/_GlobalStore';
+import {appStore} from '../stores/_GlobalStore';
 
 import {BrowserRouter as Router } from 'react-router-dom';
 
@@ -25,10 +25,6 @@ export default class App extends React.Component<any, any> {
     }
 
     render() {
-
-    let messagesExist = messageStore.list.length !== 0,
-        messageStoreLoaded = messageStore.loading,
-        removingItemId = messageStore.removingItemId;
         
     return (
         <Router>
