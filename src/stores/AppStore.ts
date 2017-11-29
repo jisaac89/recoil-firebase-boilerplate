@@ -8,7 +8,7 @@ export class AppStore {
     
     @observable nightmode = false;
     @observable mobile = false;
-    @observable menuEnabled = false;
+    @observable menu = false;
 
     constructor() {
         const self = this;
@@ -20,6 +20,10 @@ export class AppStore {
 
     toggleNightmode(){
         this.nightmode = !this.nightmode;
+    }
+
+    toggleMenu(){
+        this.menu = !this.menu;
     }
 
 }

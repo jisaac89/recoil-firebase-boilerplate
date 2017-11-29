@@ -47,7 +47,10 @@ export default abstract class BaseStore extends Store{
     }
 
     abstract addObject() : void;
-    abstract afterAdd() : void;
+    
+    afterAdd(){
+        return null;
+    }
 
     update(id : string, listItem: Object) {
         const self = this;
