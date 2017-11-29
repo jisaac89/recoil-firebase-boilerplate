@@ -8,10 +8,8 @@ import {appStore} from '../stores/_GlobalStore';
 
 @observer
 export default class MenuPane extends React.Component<any, any> {
-
     render() {
-        
-    return (
+        return (
             <SlideIn className="z4" if={appStore.menu} from="bottom" fill>
                 <Layer fill flexCenter theme="light">
                     MENU

@@ -8,16 +8,14 @@ import {messageStore} from '../stores/_GlobalStore';
 
 @observer
 export default class LoadingPane extends React.Component<any, any> {
-
     render() {
-        
-    return (
-        <SlideIn className="z5" if={messageStore.loading} from="bottom" fill>
-            <Layer fill flexCenter theme="light">
-                <Loading size="xlarge" if={messageStore.loading} />
-                <Button simple>loading...</Button>
-            </Layer>
-        </SlideIn>
+        return (
+            <SlideIn className="z5" if={messageStore.loading} from="bottom" fill>
+                <Layer fill flexCenter theme="light">
+                    <Loading size="xlarge" if={messageStore.loading} />
+                    <Button simple>loading...</Button>
+                </Layer>
+            </SlideIn>
         )
     } 
 } 
