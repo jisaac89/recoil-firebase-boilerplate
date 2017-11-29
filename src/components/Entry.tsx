@@ -55,10 +55,10 @@ export default class App extends React.Component<any, any> {
             <Layer overflow fill flex className="p10">
                 <Open className="border-bottom" if={messagesExist} openToHeight={"42px"}>
                     <Toolbar flex block textCenter flush>
-                        <Button block disabled={!messagesExist} icon={"times"} onClick={this.clearAllMessages.bind(this)} className="mb10">
+                        <Button materialIcon block disabled={!messagesExist} icon={"close"} onClick={this.clearAllMessages.bind(this)} className="mb10">
                             Clear all messages
                         </Button>
-                        <Button block disabled={!messagesExist} icon={"moon-o"} onClick={this.toggleNightmode.bind(this)} className="mb10">
+                        <Button materialIcon  block disabled={!messagesExist} icon={"mood"} onClick={this.toggleNightmode.bind(this)} className="mb10">
                             Toggle nightmode
                         </Button>      
                     </Toolbar>
@@ -72,11 +72,11 @@ export default class App extends React.Component<any, any> {
 
                     {messageStore.list.map((item : any) => {
                         return (
-                            <Open key={item.id} if={removingItemId !== item.id} openToHeight="47px">
+                            <Open key={item.id} if={removingItemId !== item.id} openToHeight="61px">
                                 <Emerge>
-                                    <Toolbar block className="ptb10 border-bottom">
-                                        <Button simple icon="times" size="small" onClick={this.removeMessage.bind(this, item.id)} />
-                                        <Button size="small" simple>{item.title}</Button>
+                                    <Toolbar block className="p10 border-bottom">
+                                        <Button materialIcon className="p0" simple icon="close" size="large" onClick={this.removeMessage.bind(this, item.id)} />
+                                        <Button className="ps10" size="large" simple>{item.title}</Button>
                                     </Toolbar>
                                 </Emerge>
                             </Open>
@@ -85,9 +85,9 @@ export default class App extends React.Component<any, any> {
                     <div id="bottom"></div>
                 </Layer>
                 <Toolbar size="large" form block flex flush className="p5 border-top">
-                    <Button className="w80px" icon={messageStore.typing ? "commenting": "user"} />
+                    <Button materialIcon className="w80px" icon={messageStore.typing ? "commenting": "face"} />
                     <Input size="large" placeholder="Add a message.." block value={messageStore.message} onChange={this.setValue.bind(this)} />
-                    <Button className="w80px" theme="primary" disabled={messageStore.message === ''} icon="comments" onClick={this.addMessage.bind(this)} submit />
+                    <Button materialIcon className="w80px" theme="primary" disabled={messageStore.message === ''} icon="add" onClick={this.addMessage.bind(this)} submit />
                 </Toolbar>
             
                 <SlideIn className="z5" if={messageStore.loading} from="bottom" fill>
