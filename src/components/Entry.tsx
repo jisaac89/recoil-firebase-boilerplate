@@ -66,7 +66,7 @@ export default class App extends React.Component<any, any> {
                 <Layer className="ptb20" block fill scrollY scrollToId={!messageStoreLoaded && messageStore.shouldScroll ? 'bottom' : ''} scrollIf={messageStore.shouldScroll}>
                     {!messagesExist ? 
                     <Toolbar block textCenter>
-                         <i className="fa super fa-commenting" />
+                         <p><i className="fa super fa-commenting" /></p>
                          <p>No messages found...</p> 
                     </Toolbar> : null}
 
