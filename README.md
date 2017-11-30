@@ -1,15 +1,23 @@
 ````
 git clone https://github.com/jisaac89/recoil-firebase-boilerplate.git
+
 cd recoil-firebase-boilerplate
+
+git clone https://github.com/jisaac89/recoil.git
+
 npm install
 ````
 
-Then run the project
+Then run project on port 9000
+
+```sh
+webpack-dev-server
+```
+
+To build the project and list for changes. 
 
 ```sh
 npm run watch
 ```
-
-Launch the documentation in your browser. It should be located at public/index.html.
 
 Change the firebase settings to yours over at src/fire.js
