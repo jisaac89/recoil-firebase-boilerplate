@@ -4,8 +4,6 @@ import * as firebase from 'firebase';
 
 import {messageStore} from './_GlobalStore';
 
-import { browserHistory } from 'react-router';
-
 
 export class AppStore {
     
@@ -27,10 +25,6 @@ export class AppStore {
 
     toggleMenu(){
         this.menu = !this.menu;
-    }
-
-    gotoRoute(route : string){
-        browserHistory.push('/some/path');
     }
 
 }
