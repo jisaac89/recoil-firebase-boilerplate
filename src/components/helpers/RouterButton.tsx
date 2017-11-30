@@ -1,15 +1,14 @@
 import * as React from "react";
 import {withRouter} from "react-router-dom";
 
-import { Recoil, Table, Button, Toolbar, Input, Emerge, Layer, SlideIn, Loading, Open, Checkbox } from '../../../recoil/src/index';
+import { Recoil, Table, Button, IButtonProps, Toolbar, Input, Emerge, Layer, SlideIn, Loading, Open, Checkbox } from '../../../recoil/src/index';
 import { observer } from 'mobx-react';
 import { appStore } from '../../stores/_GlobalStore';
 
-interface IRouterButton{
-    icon?: string;
-    history?: any;
-    route ?: string;
-    title ?: string;
+interface IRouterButton extends IButtonProps{
+    history: any;
+    route: string;
+    title?: string;
 }
 
 @observer
@@ -20,9 +19,9 @@ class RouterButton extends React.Component<IRouterButton, any> {
     this.props.history.push(route);
   }
   render(){
-      const {icon, history, route, title} = this.props;
+      const {route, title} = this.props;
       return (
-          <Button simple materialIcon icon={icon} size="xlarge" onClick={this.gotoRoute.bind(this, route)}>
+          <Button {...this.props}  onClick={this.gotoRoute.bind(this, route)}>
             {title}
           </Button>
       )

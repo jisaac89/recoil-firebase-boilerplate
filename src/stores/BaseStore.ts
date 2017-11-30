@@ -7,6 +7,7 @@ import Store from './_Store';
 export default abstract class BaseStore extends Store{
 
     ref: string;
+    delay : number;
 
     @observable list : Array<Object> = [];
     @observable listItem : ObservableMap<Object> = new ObservableMap({});
@@ -16,13 +17,14 @@ export default abstract class BaseStore extends Store{
 
     constructor(ref : string) { 
         super(ref);
+        this.delay = 300;
     }
 
     init() {
         const self = this;
-        const listRef = fire.database().ref(this.ref);
+        const ref = fire.database().ref(this.ref);
 
-        listRef.on('value', (snap : any) => {
+        ref.on('value', (snap : any) => {
             let items : any = [];
             snap.forEach((child : any) => {
                 items.push(child.val());
@@ -34,8 +36,8 @@ export default abstract class BaseStore extends Store{
 
     add() {
         const self = this;
-        const messagesRef = fire.database().ref(this.ref);
-        const id = messagesRef.push().key;
+        const ref = fire.database().ref(this.ref);
+        const id = ref.push().key;
         this.update(id, 
             self.merge(id, this.addObject())
         );
@@ -52,34 +54,33 @@ export default abstract class BaseStore extends Store{
         return null;
     }
 
-    update(id : string, listItem: Object) {
+    update(id : string, object: Object) {
         const self = this;
-        const listRef = fire.database().ref(this.ref);
-        listRef.update({[id]: listItem}, ()=>{
+        const ref = fire.database().ref(this.ref);
+        ref.update({[id]: object}, ()=>{
             self.afterAdd();
         })
     };
 
     del(id : string) {
         const self = this;
-        const listRef = fire.database().ref(self.ref);
+        const ref = fire.database().ref(self.ref);
         self.removingItemId = id;
 
-        setTimeout(function() {
-
-            listRef.child(id).remove();
+        setTimeout(() => {
+            ref.child(id).remove();
             self.removingItemId = '';
-        }, 300);
+        }, this.delay);
     };
 
     clearAll(){
-        const listRef = fire.database().ref(this.ref);
+        const ref = fire.database().ref(this.ref);
         this.loading = true;
 
         setTimeout(() => {
-        listRef.remove();
+            ref.remove();
             this.loading = false;
-        }, 3500);
+        }, this.delay);
     }
 
 }

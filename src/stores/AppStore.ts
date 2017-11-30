@@ -2,7 +2,7 @@ import {observable, computed} from 'mobx';
 
 import * as firebase from 'firebase';
 
-import {messageStore, usersStore} from './_GlobalStore';
+import {messageStore} from './_GlobalStore';
 
 import { browserHistory } from 'react-router';
 
@@ -19,7 +19,6 @@ export class AppStore {
 
     initializeApp() {
         messageStore.init();
-        usersStore.init();
     }
 
     toggleNightmode(){
