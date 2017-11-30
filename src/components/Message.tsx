@@ -14,6 +14,10 @@ export default class Message extends React.Component<any, any> {
         super(props);
     }
 
+    componentDidMount(){
+        appStore.menu = false;
+    }
+
     addMessage(e) {
         e.preventDefault();
         messageStore.add()

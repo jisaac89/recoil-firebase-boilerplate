@@ -4,6 +4,9 @@ import * as firebase from 'firebase';
 
 import {messageStore} from './_GlobalStore';
 
+import { browserHistory } from 'react-router';
+
+
 export class AppStore {
     
     @observable nightmode = false;
@@ -24,6 +27,10 @@ export class AppStore {
 
     toggleMenu(){
         this.menu = !this.menu;
+    }
+
+    gotoRoute(route : string){
+        browserHistory.push('/some/path');
     }
 
 }

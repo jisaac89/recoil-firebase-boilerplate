@@ -7,7 +7,8 @@
     "prepublishOnly": "tsc --declaration",
     "tsc": "tsc",
     "build": "webpack --config webpack.config.js --progress",
-    "watch": "webpack --config webpack.config.js --watch --progress"
+    "watch": "webpack --config webpack.config.js --watch --progress",
+    "start:dev": "webpack-dev-server"
   },
   "author": "joseph isaac",
   "license": "MIT",
@@ -43,6 +44,6 @@
     "ts-loader": "2.3.7",
     "typescript": "2.5.3",
     "webpack": "3.6.0",
-    "webpack-dev-server": "2.9.1"
+    "webpack-dev-server": "^2.9.1"
   }
 }

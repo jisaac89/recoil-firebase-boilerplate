@@ -6,10 +6,11 @@ import {observer} from 'mobx-react';
 
 import {appStore} from '../stores/_GlobalStore';
 
-import {BrowserRouter as Router } from 'react-router-dom';
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './Header';
 import Message from './Message';
+import Dashboard from './Dashboard';
 import MenuPane from './MenuPane';
 import LoadingPane from './LoadingPane';
 
@@ -32,9 +33,10 @@ export default class App extends React.Component<any, any> {
                 <Layer overflow fill>
                     <Layer overflow fill flex>
                         <Header />
-                        <Message />
+                        <Route exact path="/" component={Dashboard} />
+                        <Route path="/messages" component={Message} />
                     </Layer>
-                    <MenuPane />
+                    <MenuPane history={this.props.history} />
                     <LoadingPane />
                 </Layer>
             </Recoil>
