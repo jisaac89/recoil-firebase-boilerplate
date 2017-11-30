@@ -8,11 +8,12 @@ import {appStore} from '../stores/_GlobalStore';
 
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Header from './Header';
-import Message from './Message';
-import Dashboard from './Dashboard';
-import MenuPane from './MenuPane';
-import LoadingPane from './LoadingPane';
+import Header from './navigation/Header';
+import MenuPane from './navigation/MenuPane';
+import LoadingPane from './navigation/LoadingPane';
+import Dashboard from './routes/Dashboard';
+import Message from './routes/Message';
+import Users from './routes/Users';
 
 @observer
 export default class App extends React.Component<any, any> {
@@ -35,6 +36,7 @@ export default class App extends React.Component<any, any> {
                         <Header />
                         <Route exact path="/" component={Dashboard} />
                         <Route path="/messages" component={Message} />
+                        <Route path="/users" component={Users} />
                     </Layer>
                     <MenuPane history={this.props.history} />
                     <LoadingPane />

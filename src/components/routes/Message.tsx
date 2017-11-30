@@ -1,11 +1,11 @@
 
 import * as React from 'react';
 
-import { Recoil, Table, Button, Toolbar, Input, Emerge, Layer, SlideIn, Loading, Open, Checkbox } from '../../recoil/src/index';
+import { Recoil, Table, Button, Toolbar, Input, Emerge, Layer, SlideIn, Loading, Open, Checkbox } from '../../../recoil/src/index';
 
 import { observer } from 'mobx-react';
 
-import { appStore, messageStore } from '../stores/_GlobalStore';
+import { appStore, messageStore } from '../../stores/_GlobalStore';
 
 @observer
 export default class Message extends React.Component<any, any> {
@@ -54,9 +54,9 @@ export default class Message extends React.Component<any, any> {
                         Clear all messages
                     </Button>
                 </Toolbar> : null}
-                <Layer block fill scrollY scrollToId={!messageStoreLoaded && messageStore.shouldScroll ? 'bottom' : ''} scrollIf={messageStore.shouldScroll}>
+                <Layer flexCenter={!messagesExist} block fill scrollY scrollToId={!messageStoreLoaded && messageStore.shouldScroll ? 'bottom' : ''} scrollIf={messageStore.shouldScroll}>
                     {!messagesExist ?
-                        <Toolbar block textCenter className="mt20 floatL">
+                        <Toolbar block textCenter className="floatL">
                             <p><i className="fa super fa-commenting" /></p>
                             <p>No messages found...</p>
                         </Toolbar> : null}

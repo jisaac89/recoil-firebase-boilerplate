@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import {Toolbar, Button, Layer} from '../../recoil/src/index';
+import {Toolbar, Button, Layer} from '../../../recoil/src/index';
 
 import {observer} from 'mobx-react';
 
-import {appStore} from '../stores/_GlobalStore';
+import {appStore} from '../../stores/_GlobalStore';
 
 @observer
 export default class Header extends React.Component<any, any> {
