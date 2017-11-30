@@ -2,11 +2,13 @@ import {observable, computed, ObservableMap, toJS} from 'mobx';
 import * as firebase from 'firebase';
 import fire from '../fire.js';
 
+import {IMessage} from '../interfaces/IMessage';
+
 import BaseStore from './BaseStore';
 
 export class MessageStore extends BaseStore {
 
-  @observable message : string = '';
+  @observable message : IMessage = observable({title : ''});
   @observable shouldScroll : boolean = true;
   @observable typing : boolean = false;
 
@@ -15,19 +17,17 @@ export class MessageStore extends BaseStore {
   }
 
   addObject(){
-    return {
-      title : this.message
-    }
+    return this.message;
   }
 
   afterAdd(){
     this.shouldScroll = true;
     this.typing = false;
-    this.message = '';
+    this.message.title = '';
   }
 
   setMessage(message : string){
-    this.message = message;
+    this.message.title = message;
     this.shouldScroll = false;
     this.typing = true;
   }

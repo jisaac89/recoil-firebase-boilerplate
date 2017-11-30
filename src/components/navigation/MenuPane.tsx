@@ -20,7 +20,7 @@ export default class MenuPane extends React.Component<any, any> {
                     <Emerge if={appStore.menu}>
                         <div></div>
                         <div>
-                            <RouterButton materialIcon size="xlarge" simple history={history} icon="messages" route="/messages" title="messages" />
+                            <RouterButton materialIcon size="xlarge" simple history={history} icon="message" route="/messages" title="messages" />
                         </div>                 
                     </Emerge>
                 </Layer>

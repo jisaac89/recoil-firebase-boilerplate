@@ -77,9 +77,9 @@ export default class Message extends React.Component<any, any> {
                 </Layer>
                 <Layer>
                     <Toolbar size="large" form block flex flush className="p5 border-top">
-                        <Button materialIcon className="w80px" icon={messageStore.typing ? "commenting" : "face"} />
-                        <Input size="large" placeholder="Add a message.." block value={messageStore.message} onChange={this.setValue.bind(this)} />
-                        <Button materialIcon className="w80px" theme="primary" disabled={messageStore.message === ''} icon="add" onClick={this.addMessage.bind(this)} submit />
+                        <Button materialIcon className="w80px" icon={messageStore.typing ? "comment" : "face"} />
+                        <Input size="large" placeholder="Add a message.." block value={messageStore.message.title} onChange={this.setValue.bind(this)} />
+                        <Button materialIcon className="w80px" theme="primary" disabled={messageStore.message.title === ''} icon="add" onClick={this.addMessage.bind(this)} submit />
                     </Toolbar>
                 </Layer>
             </Layer>
