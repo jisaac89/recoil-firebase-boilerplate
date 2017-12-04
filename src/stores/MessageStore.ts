@@ -4,9 +4,9 @@ import fire from '../fire.js';
 
 import {IMessage} from '../interfaces/IMessage';
 
-import BaseStore from './BaseStore';
+import PaginateStore from './PaginateStore';
 
-export class MessageStore extends BaseStore {
+export class MessageStore extends PaginateStore {
 
   @observable message : IMessage = observable({title : ''});
   @observable shouldScroll : boolean = true;

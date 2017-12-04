@@ -15,13 +15,12 @@ export default abstract class BaseStore extends Store{
     @observable loading : boolean = true;
     @observable removingItemId : string = '';
 
-    constructor(ref : string) { 
+    constructor(ref : string) {
         super(ref);
         this.delay = 300;
     }
 
-    init() {
-        const self = this;
+    loadNewPage() {
         const ref = fire.database().ref(this.ref);
 
         ref.on('value', (snap : any) => {
@@ -32,6 +31,11 @@ export default abstract class BaseStore extends Store{
             this.list = items;
             this.loading = false;
         });
+    }
+
+    init() {
+        const self = this;
+        this.loadNewPage();
     }
 
     add() {
