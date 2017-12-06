@@ -38,13 +38,12 @@ export default abstract class BaseStore extends Store{
         this.loadNewPage();
     }
 
-    add() {
-        const self = this;
+    async add() : Promise<any> {
         const ref = fire.database().ref(this.ref);
         const id = ref.push().key;
-        this.update(id, 
-            self.merge(id, this.addObject())
-        );
+        await this.update(id, this.merge(id, this.addObject()));
+
+        return id;
     };
 
     merge(id : string, object ?: any){
@@ -58,30 +57,30 @@ export default abstract class BaseStore extends Store{
         return null;
     }
 
-    update(id : string, object: Object) {
+    async update(id : string, object: Object) {
         const self = this;
         const ref = fire.database().ref(this.ref);
-        ref.update({[id]: object}, ()=>{
+        await ref.update({[id]: object}).then(()=>{
             self.afterAdd();
         })
     };
 
-    del(id : string) {
+    async del(id : string) {
         const self = this;
         const ref = fire.database().ref(self.ref);
         self.removingItemId = id;
 
-        setTimeout(() => {
+        await setTimeout(() => {
             ref.child(id).remove();
             self.removingItemId = '';
         }, this.delay);
     };
 
-    clearAll(){
+    async clearAll(){
         const ref = fire.database().ref(this.ref);
         this.loading = true;
 
-        setTimeout(() => {
+        await setTimeout(() => {
             ref.remove();
             this.loading = false;
         }, this.delay);

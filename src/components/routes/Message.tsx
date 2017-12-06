@@ -20,7 +20,7 @@ export default class Message extends React.Component<any, any> {
 
     addMessage(e) {
         e.preventDefault();
-        messageStore.add()
+        messageStore.add();
     }
 
     template(item, index) {
