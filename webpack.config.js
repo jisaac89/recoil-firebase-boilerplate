@@ -21,11 +21,11 @@ module.exports = {
             }
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': {
+        //         'NODE_ENV': JSON.stringify('production')
+        //     }
+        // }),
         new ExtractTextPlugin("./public/bundle/[name].css")
     ],
     module: {
@@ -56,6 +56,6 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         compress: true,
-        port: 8080
+        port: 9000
     }
 };
